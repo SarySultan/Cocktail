@@ -1,0 +1,33 @@
+!!! Description subject to update !!
+
+**Project Description: Cocktail**
+
+**Purpose:**
+The purpose of this project is to create a system for mixing various ingredients to produce cocktails.
+ It simulates the process of blending fruits, liquids, and sugars to create unique cocktails with different flavors, colors, and nutritional values.
+
+
+Important!!!
+
+Two things have been added to develop the core project
+1- Instead of using milk class replaced with liquid class so that liquid includes
+all drinks (such as milk, orange juice, honey, strawberry milk... etc.)
+
+2- The idea is to add a property to the ingredients so that they are classified into 
+Sweet taste and sour taste and give a degree of sweetness or  sourness of that ingredient so that, 
+for example, sugar is sweet 5/5, lemon is sour 5/5, pineapple is sweet 2/5, 
+and so when producing a cocktail the user is told about the expected taste of this cocktail (is sour or sweet) and the degree of its sweet or sour.
+
+
+**Relationships Between Classes:**
+
+
+- The `Cup` class is associated with the `Cocktail` class through the `pourCocktail()` method, 
+which calculates the calories in one cup based on the cocktail's properties.
+
+- The `Blender` class aggregates instances of `Ingredient` classes to mix them and create a `Cocktail`.
+
+- The `Cocktail` class aggregates instances of `Ingredient` classes to represent the final mixture.
+
+- The `Ingredient` class serves as a base class for `Fruit`, `Liquid`, and `Sugar` classes, providing common properties and behaviors for all ingredients.
+
