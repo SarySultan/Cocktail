@@ -79,7 +79,7 @@ public class Blender {
         }
     }
 
-    // Method to mix ingredients and create a cocktail
+    // Method to mix (blend)ingredients and create a cocktail
     public Cocktail mix() throws blenderIsEmptyException {
         int numLiquid = 0, numFruit = 0;
 
