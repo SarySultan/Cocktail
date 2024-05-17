@@ -1,4 +1,4 @@
-package cocktaill;
+package CocktaillConsole;
 
 // Represents sugar as an ingredient
 public class Sugar extends Ingredient {

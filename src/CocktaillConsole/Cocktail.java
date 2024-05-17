@@ -1,4 +1,4 @@
-package cocktaill;
+package CocktaillConsole;
 
 import java.awt.Color;
 
@@ -11,7 +11,7 @@ public class Cocktail {
     private int totalTaste;
 
     public Cocktail() {
-        this.finalColor = new Color(0, 0, 0);
+        this.finalColor = new Color(0,0,0);
         this.totalCalories = 0;
         this.totalVolume = 0.0;
         this.totalTaste = 0;
@@ -87,5 +87,29 @@ public class Cocktail {
                 + ", Total Calories: " + totalCalories
                 + ", Total Volume: " + totalVolume
                 + ", Total Taste: " + taste;
+    }
+     public String getInfoGUI() {
+//        Informs the user of the expected taste of the cocktail
+        String taste = " ";
+        if (totalTaste > 0 && totalTaste <= 2) {
+            taste = "A little sweet";
+        } else if (totalTaste > 2 && totalTaste < 4) {
+            taste = "Sweet";
+        } else if (totalTaste >= 4) {
+            taste = "Very sweet";
+        } else if (totalTaste < 0 && totalTaste >= -2) {
+            taste = "A little sour";
+        } else if (totalTaste < -2 && totalTaste > -4) {
+            taste = "Sour";
+        } else if (totalTaste <= -4) {
+            taste = "Very sour";
+        } else if (totalTaste == 0) {
+            taste = "It is difficult to determine its sweetness or sourness.";
+        }
+        return 
+                 "Total Calories: " + totalCalories
+                + "\nTotal Volume: " + totalVolume
+                + "\nTotal Taste: " + taste
+                + "\nFinal Color: ==>>> ";
     }
 }

@@ -1,4 +1,4 @@
-package cocktaill;
+package CocktaillConsole;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -8,18 +8,29 @@ public class Blender {
 
     private double blenderCapacity;
     public ArrayList<Ingredient> ingredients;
+    FileLogger logger ;
+    
+
+   // Constructor to initialize Blender object with blenderCapacity and an empty list of ingredients
+     public Blender(double blenderCapacity,FileLogger logger) {
+        this.blenderCapacity = blenderCapacity;
+        this.ingredients = new ArrayList<>();
+        this.logger=logger;
+        
+    }
+    
     double editVolume, editCalories;
     int editTaste;
 
     public double getEditVolume() {
         return editVolume;
     }
+    
 
-    // Constructor to initialize Blender object with blenderCapacity and an empty list of ingredients
-    public Blender(double blenderCapacity) {
-        this.blenderCapacity = blenderCapacity;
-        this.ingredients = new ArrayList<>();
-    }
+    
+
+    
+    
 
     public void setEditVolume(double editVolume) {
         if (editVolume == 0) {
@@ -72,36 +83,50 @@ public class Blender {
 
     // Method to add an ingredient to the blender
     public void addIngredient(Ingredient ingredient) throws BlenderOverflowException {
+        
         if (getCocktailVolume() + ingredient.getVolume() <= getBlenderCapacity()) {
             ingredients.add(ingredient);
+             
         } else {
             throw new BlenderOverflowException();
         }
     }
 
     // Method to mix (blend)ingredients and create a cocktail
-    public Cocktail mix() throws blenderIsEmptyException {
-        int numLiquid = 0, numFruit = 0;
+    public Cocktail mix() throws BlenderIsEmptyException {
+    int numLiquid = 0, numFruit = 0;
 
+    for (Ingredient ingredient : ingredients) {
+        if (ingredient instanceof Fruit) {
+            numFruit++;
+        } else if (ingredient instanceof Liquid) {
+            numLiquid++;
+        }
+    }
+
+    if (getCocktailVolume() != 0 && (numFruit != 0 || numLiquid != 0)) {
+        Color finalColor = getTotalColor();
+        double totalCalories = getTotalCalories();
+        int totalTaste = getTotalTaste();
+        double totalVolume = getCocktailVolume(); // Ensure this is a variable
+
+        Cocktail cocktail = new Cocktail(finalColor, totalCalories, totalVolume, totalTaste);
+
+        // Log the cocktail creation
+        logger.log("Cocktail created with ingredients: " + getIngredientsInfo() + cocktail.getInfo());
+   
+        return cocktail;
+    } else {
+        throw new BlenderIsEmptyException();
+    }
+
+    }
+    private String getIngredientsInfo() {
+        StringBuilder info = new StringBuilder();
         for (Ingredient ingredient : ingredients) {
-            if (ingredient instanceof Fruit) {
-                numFruit++;
-            } else if (ingredient instanceof Liquid) {
-                numLiquid++;
-            }
-
+            info.append(ingredient.getName()).append(", ");
         }
-
-        if (getCocktailVolume() != 0 && (numFruit != 0 || numLiquid != 0)) {//The condition must not be empty. The second condition is that there be fruit or liquid
-            Color finalColor = getTotalColor();
-            double totalCalories = getTotalCalories();
-            int totalTaste = getTotalTaste();
-            double totalvolume = getCocktailVolume();
-            return new Cocktail(finalColor, totalCalories, totalvolume, totalTaste);
-        } else {
-            throw new blenderIsEmptyException();
-        }
-
+        return info.toString();
     }
 
     // Method to calculate the average (final) color of ingredients
@@ -135,8 +160,10 @@ public class Blender {
         red /= numIngredients;
         green /= numIngredients;
         blue /= numIngredients;
+        
         return new Color(red, green, blue);
     }
+    
 
     // Method to calculate the total calories of ingredients
     public double getTotalCalories() {
@@ -156,9 +183,9 @@ public class Blender {
 
         }
         if (getEditTaste() >= 0) {
-            return (((totalTast / 5) - getEditTaste()) / 2);//The percentage is estimated
+            return (((totalTast / 5) - getEditTaste()));//The percentage is estimated
         } else {
-            return (((totalTast / 5) + getEditTaste()) / 2);
+            return (((totalTast / 5) + getEditTaste()));
         }
 
     }

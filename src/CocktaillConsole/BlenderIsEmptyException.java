@@ -1,11 +1,12 @@
-package cocktaill;
+package CocktaillConsole;
 
-public class blenderIsEmptyException extends Exception {
+public class BlenderIsEmptyException extends Exception {
 
     @Override
     public String getMessage() {
         return "The blender is empty, please add ingredients.";
 
     }
+    
 
 }

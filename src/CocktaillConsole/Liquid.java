@@ -1,4 +1,4 @@
-package cocktaill;
+package CocktaillConsole;
 
 import java.awt.Color;
 
@@ -16,11 +16,7 @@ public class Liquid extends Ingredient {
     public Color getColor() {
         return color;
     }
-// Method to convert Color object to string
 
-    private String colorToString(Color color) {
-        return "[r=" + color.getRed() + ",g=" + color.getGreen() + ",b=" + color.getBlue() + "]";
-    }
 
     // Method to return information about the liquid including its color
     @Override

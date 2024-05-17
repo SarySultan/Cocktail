@@ -1,4 +1,4 @@
-package cocktaill;
+package CocktaillConsole;
 
 public class BlenderOverflowException extends Exception {
 

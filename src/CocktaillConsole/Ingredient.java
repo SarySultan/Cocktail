@@ -1,4 +1,4 @@
-package cocktaill;
+package CocktaillConsole;
 
 // Represents an ingredient used in cocktails(will go to Blender)
 public abstract class Ingredient {
