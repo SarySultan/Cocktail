@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="CocktaillConsole">
+  <ClassDiagramComponents>
+    <Class name="Blender" package="CocktaillConsole" visibility="public" xPosition="1454.0" yPosition="59.0">
+      <Fields>
+        <Field name="blenderCapacity" type="double" visibility="private"/>
+        <Field name="ingredients" type="ArrayList&lt;Ingredient&gt;" visibility="public"/>
+        <Field name="logger" type="FileLogger" visibility="package"/>
+        <Field name="editVolume" type="double" visibility="package"/>
+        <Field name="editTaste" type="int" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="blenderCapacity"/>
+          <Argument type="FileLogger" name="logger"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEditVolume" returnType="double" visibility="public"/>
+        <Method name="setEditVolume" returnType="void" visibility="public">
+          <Argument type="double" name="editVolume"/>
+        </Method>
+        <Method name="getEditCalories" returnType="double" visibility="public"/>
+        <Method name="setEditCalories" returnType="void" visibility="public">
+          <Argument type="double" name="editCalories"/>
+        </Method>
+        <Method name="getEditTaste" returnType="int" visibility="public"/>
+        <Method name="setEditTaste" returnType="void" visibility="public">
+          <Argument type="int" name="editTaste"/>
+        </Method>
+        <Method name="getBlenderCapacity" returnType="double" visibility="public"/>
+        <Method name="setBlenderCapacity" returnType="void" visibility="public">
+          <Argument type="double" name="blenderCapacity"/>
+        </Method>
+        <Method name="cleanBlender" returnType="void" visibility="public">
+          <Argument type="Cocktail" name="cocktail"/>
+          <Argument type="Blender" name="blender"/>
+        </Method>
+        <Method name="addIngredient" returnType="void" visibility="public">
+          <Argument type="Ingredient" name="ingredient"/>
+        </Method>
+        <Method name="mix" returnType="Cocktail" visibility="public"/>
+        <Method name="getIngredientsInfo" returnType="String" visibility="private"/>
+        <Method name="getTotalColor" returnType="Color" visibility="public"/>
+        <Method name="getTotalCalories" returnType="double" visibility="public"/>
+        <Method name="getTotalTaste" returnType="int" visibility="public"/>
+        <Method name="getCocktailVolume" returnType="double" visibility="public"/>
+        <Method name="getInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BlenderIsEmptyException" package="CocktaillConsole" visibility="public" xPosition="665.0" yPosition="673.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getMessage" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BlenderOverflowException" package="CocktaillConsole" visibility="public" xPosition="1116.0" yPosition="165.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getMessage" returnType="String" visibility="public">
+          <Argument type="Blender" name="blender"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Cocktail" package="CocktaillConsole" visibility="public" xPosition="914.0" yPosition="325.0">
+      <Fields>
+        <Field name="finalColor" type="Color" visibility="private"/>
+        <Field name="totalCalories" type="double" visibility="private"/>
+        <Field name="totalVolume" type="double" visibility="private"/>
+        <Field name="totalTaste" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Color" name="finalColor"/>
+          <Argument type="double" name="totalCalories"/>
+          <Argument type="double" name="totalVolume"/>
+          <Argument type="int" name="totalTaste"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setFinalColor" returnType="void" visibility="public">
+          <Argument type="Color" name="finalColor"/>
+        </Method>
+        <Method name="setTotalCalories" returnType="void" visibility="public">
+          <Argument type="double" name="totalCalories"/>
+        </Method>
+        <Method name="setTotalVolume" returnType="void" visibility="public">
+          <Argument type="double" name="totalVolume"/>
+        </Method>
+        <Method name="setTotalTaste" returnType="void" visibility="public">
+          <Argument type="int" name="totalTaste"/>
+        </Method>
+        <Method name="getFinalColor" returnType="Color" visibility="public"/>
+        <Method name="getTotalCalories" returnType="double" visibility="public"/>
+        <Method name="getTotalVolume" returnType="double" visibility="public"/>
+        <Method name="getTotalTaste" returnType="int" visibility="public"/>
+        <Method name="colorToString" returnType="String" visibility="public">
+          <Argument type="Color" name="color"/>
+        </Method>
+        <Method name="getInfo" returnType="String" visibility="public"/>
+        <Method name="getInfoGUI" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cup" package="CocktaillConsole" visibility="public" xPosition="770.0" yPosition="825.0">
+      <Fields>
+        <Field name="cupSize" type="double" visibility="private"/>
+        <Field name="caloriesInOneCup" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="logger" type="FileLogger" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="cupSize"/>
+          <Argument type="double" name="caloriesInOneCup"/>
+          <Argument type="FileLogger" name="logger"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCupSize" returnType="double" visibility="public"/>
+        <Method name="getCaloriesInOneCup" returnType="double" visibility="public"/>
+        <Method name="getVolume" returnType="double" visibility="public"/>
+        <Method name="setCupSize" returnType="void" visibility="public">
+          <Argument type="double" name="cupSize"/>
+        </Method>
+        <Method name="setCaloriesInOneCup" returnType="void" visibility="public">
+          <Argument type="double" name="caloriesInOneCup"/>
+        </Method>
+        <Method name="setVolume" returnType="void" visibility="public">
+          <Argument type="double" name="volume"/>
+        </Method>
+        <Method name="pourCocktail" returnType="String" visibility="public">
+          <Argument type="Cocktail" name="cocktail"/>
+          <Argument type="Blender" name="blender"/>
+        </Method>
+        <Method name="getInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="FileLogger" package="CocktaillConsole" visibility="public" xPosition="1378.0" yPosition="789.0">
+      <Fields>
+        <Field name="logFilePath" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="logFilePath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="String" name="message"/>
+        </Method>
+        <Method name="clearLog" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Fruit" package="CocktaillConsole" visibility="public" xPosition="2234.0" yPosition="616.0">
+      <Fields>
+        <Field name="color" type="Color" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="double" name="calorie"/>
+          <Argument type="double" name="volume"/>
+          <Argument type="String" name="taste"/>
+          <Argument type="boolean" name="isSweet"/>
+          <Argument type="int" name="sweetness"/>
+          <Argument type="Color" name="color"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getColor" returnType="Color" visibility="public"/>
+        <Method name="getInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Ingredient" package="CocktaillConsole" visibility="public" isAbstract="true" xPosition="1947.0" yPosition="193.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="calorie" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="taste" type="String" visibility="private"/>
+        <Field name="isSweet" type="boolean" visibility="private"/>
+        <Field name="sweetness" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="double" name="calorie"/>
+          <Argument type="double" name="volume"/>
+          <Argument type="String" name="taste"/>
+          <Argument type="boolean" name="isSweet"/>
+          <Argument type="int" name="sweetness"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getCalorie" returnType="double" visibility="public"/>
+        <Method name="getVolume" returnType="double" visibility="public"/>
+        <Method name="getTaste" returnType="String" visibility="public"/>
+        <Method name="getIsSweet" returnType="boolean" visibility="public"/>
+        <Method name="getSweetness" returnType="int" visibility="public"/>
+        <Method name="getInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Liquid" package="CocktaillConsole" visibility="public" xPosition="1614.0" yPosition="789.0">
+      <Fields>
+        <Field name="color" type="Color" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="double" name="calorie"/>
+          <Argument type="double" name="volume"/>
+          <Argument type="String" name="taste"/>
+          <Argument type="boolean" name="isSweet"/>
+          <Argument type="int" name="sweetness"/>
+          <Argument type="Color" name="color"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getColor" returnType="Color" visibility="public"/>
+        <Method name="getInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Main" package="CocktaillConsole" visibility="public" xPosition="1681.0" yPosition="549.0">
+      <Fields>
+        <Field name="ingredients" type="Ingredient[]" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="initializeIngredients" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="getArray" returnType="Ingredient[]" visibility="public" isStatic="true"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Sugar" package="CocktaillConsole" visibility="public" xPosition="1999.0" yPosition="789.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="double" name="calorie"/>
+          <Argument type="double" name="volume"/>
+          <Argument type="String" name="taste"/>
+          <Argument type="boolean" name="isSweet"/>
+          <Argument type="int" name="sweetness"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="Logger" package="CocktaillConsole" visibility="public" xPosition="1248.0" yPosition="1001.0">
+      <Methods>
+        <Method name="log" returnType="void" visibility="package">
+          <Argument type="String" name="message"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="CocktaillConsole.Cup" target="CocktaillConsole.Cocktail" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="CocktaillConsole.Blender" target="CocktaillConsole.Ingredient" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="CocktaillConsole.Blender" target="CocktaillConsole.Cocktail" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="CocktaillConsole.BlenderOverflowException" target="CocktaillConsole.Blender" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="CocktaillConsole.Fruit" target="CocktaillConsole.Ingredient"/>
+    <HasRelation name="logger" source="CocktaillConsole.Cup" target="CocktaillConsole.FileLogger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ingredients" source="CocktaillConsole.Blender" target="CocktaillConsole.Ingredient" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Ingredient&gt;"/>
+    <IsRelation name="is" source="CocktaillConsole.Liquid" target="CocktaillConsole.Ingredient"/>
+    <IsRelation name="is" source="CocktaillConsole.Sugar" target="CocktaillConsole.Ingredient"/>
+    <HasRelation name="logger" source="CocktaillConsole.Blender" target="CocktaillConsole.FileLogger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="CocktaillConsole.Main" target="CocktaillConsole.Ingredient" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="CocktaillConsole.FileLogger" target="CocktaillConsole.Logger"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

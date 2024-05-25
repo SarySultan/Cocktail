@@ -178,14 +178,15 @@ public class Blender {
     // Method to calculate the average (final) taste of ingredients
     public int getTotalTaste() {
         int totalTast = 0;
+         int numIngredients = ingredients.size();
         for (Ingredient ingredient : ingredients) {
             totalTast += ingredient.getSweetness();
 
         }
         if (getEditTaste() >= 0) {
-            return (((totalTast / 5) - getEditTaste()));//The percentage is estimated
+            return (((totalTast / numIngredients) - getEditTaste()));//The percentage is estimated
         } else {
-            return (((totalTast / 5) + getEditTaste()));
+            return (((totalTast / numIngredients) + getEditTaste()));
         }
 
     }

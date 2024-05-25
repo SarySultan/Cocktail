@@ -1,4 +1,4 @@
-Inside this folder there are 3 files
+Inside this folder there are 2 files
 
 The first is the UL file created using (Apache NetBeans IDE 20) by writing the code correctly and it
 creates the UML (this version usually does not carry this feature so I upload it and add it to
@@ -6,4 +6,3 @@ Apache NetBeans IDE 20 following video showing the way: https://youtu.be/MiysL0M
 
 Second: Image for UML
 
-Third: Detailed video of UML in case the picture was not clear enough
